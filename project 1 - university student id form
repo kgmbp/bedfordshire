@@ -1,0 +1,113 @@
+import csv
+import sys
+import os
+
+    #main code login
+def main():
+    login()
+    #login with the defined username and password at the config
+def login():
+    username="hasan"
+    password="1234"
+    print("Enter username : ")
+    answer1=input()
+    print("Enter password : ")
+    answer2=input()
+    if answer1==username and answer2==password:
+        print("Welcome - Access Granted")
+        menu()
+    #enter main menu to choose option from the below
+def menu():
+    print("Student Main Menu")
+    print()
+    #choice A is to create a new student id
+    #choice B is to view student id details, coming soon
+    #choice C is to search for the current student id number
+    #choice D is to quit and end the program
+    choice = input("""
+                      A: Create New Student ID
+                      B: View Student ID details
+                      C: Search by Student ID number
+                      D: Quit/Log Out
+
+                      Please enter your choice: """)
+    #if A is true create a new student id
+    if choice == "A" or choice =="a":
+        createnewstudentid()
+    elif choice == "B" or choice =="b":
+        viewsiddetails()
+    elif choice == "C" or choice =="c":
+        searchbysid()
+    elif choice=="D" or choice=="d":
+        sys.exit()
+    else:
+        print("You must only select either A,B,C, or D.")
+        print("Please try again")
+        menu()
+    #create a new student id code config is below
+def createnewstudentid():
+    print("Enter id")
+    studentid=input()
+    print("Enter first name")
+    firstname=input()
+    print("Enter surname")
+    surname=input()
+    print("Enter Date of Birth Format: dd/mm/yy")
+    dob=input()
+    print("Enter your address")
+    youraddress=input()
+    print("Enter your Postcode")
+    postcode=input()
+    print("Enter your Gender")
+    gender=input()
+    print("Enter your class hall")
+    classhall=input()
+    print("Enter your email address")
+    email=input()
+    with open('sidfile.txt','a') as sidfile:
+        sidfileWriter=csv.writer(sidfile)
+        sidfileWriter.writerow([studentid,firstname,surname,dob,youraddress,postcode,gender,classhall,email])
+        print("Record has been written to file")
+        menu()
+        
+
+
+    
+    
+    #view student id details is coming soon
+def viewsiddetails():
+    print("Enter id to search or use function C")
+    studentid=input()
+    print("Please try again")
+    
+    menu()
+    #search by id is working 50%
+def searchbysid():
+    sid1 = "studentid"
+    print(id(sid1))
+
+    sid2 = "studentid"
+    print(id(sid2))
+
+    #this should return true
+    print(id(sid1) == id(sid2))
+
+    #code will use from the below list
+    list1 = ["2017", "2018", "2019"]
+    print(id(list1[0]))
+    print(id(list1[1]))
+
+    #if incase the answer is false
+    print(id(list1[0])==id(list1[2]))
+    #sid will show after the answer and go back to the main menu
+    print("Search was Successfully Complete")
+    print("Choose another option from the student main menu")
+    menu()
+    
+
+
+def sysexit():
+    sys.exit
+
+main()
+    #id pull request reference to geeksforgeeks.org for the id() inbuilt python function.
